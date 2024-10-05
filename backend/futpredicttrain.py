@@ -45,16 +45,14 @@ def model_predict(data):
     model = model_train()
 
     X_test["Position"] = X_test["Position"].apply(position_type)
-    #X_test.drop(["OverallRating"], axis=1, inplace=True)      
-    playername = X_test["PlayerName"]        
+    #X_test.drop(["OverallRating"], axis=1, inplace=True)             
     X_test.drop("PlayerName", axis=1, inplace=True)
-
 
     preds_test = model.predict(X_test)
 
-    return playername + ":" + str(round(float(preds_test)))
+    return data[0] + ":" + str(round(preds_test[0]))
 
-print(model_predict(["Player Name","CB",99,99,78,85,76,99,88]))
+#print(model_predict(["Player Name","CB",99,99,78,85,76,99,88]))
 #output = pd.DataFrame({'Id': X_test.index,
 #                       'OverallRating': preds_test})
 #output.to_csv('predictratingstest.csv', index=False)
