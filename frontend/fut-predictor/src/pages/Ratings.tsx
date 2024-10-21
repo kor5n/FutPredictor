@@ -3,7 +3,7 @@ import PlayerList from "../components/PlayerList"
 
 export default function(){
     const [error, setError] = useState<boolean>(false);
-    const [pname, setPname] = useState<string[]>([]);
+    const [stats, setStats] = useState<string[]>([]);
 
     const OnLoadFunc = async () =>{
         try {
@@ -11,7 +11,14 @@ export default function(){
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {
-              return data.pname as string[]; 
+                const sep:string = " "
+                let propList:string[] = ["Name" +sep+"position"+sep +"overall"+sep+ "pace"+sep+ "shooting" +sep+"passing"+sep+ "dribbling"+sep+ "defending"+sep+ "physical"] 
+                for (let i:number=0;i<data.pname.length;i++){
+                    const tmp:string = data.pname[i].toString() +sep+ data.pos[i].toString() +sep+ data.ovr[i].toString() +sep+ data.pace[i].toString() +sep+ data.shoot[i].toString()
+                    +sep+ data.pass[i].toString() +sep+ data.drib[i].toString() +sep+ data.def[i].toString() +sep+ data.phys[i].toString()
+                    propList.push(tmp)
+                }
+                return propList as string[]; 
             } else {
               return [];
             }
@@ -28,7 +35,7 @@ export default function(){
           if (names.length === 0) {
             setError(true);
           } else {
-            setPname(names);
+            setStats(names);
           }
         };
         
@@ -40,7 +47,7 @@ export default function(){
             {error ? (
                 <p>Error loading player names.</p>
             ) : (
-                <PlayerList pname={pname} pos={[]} ovr={[]} pace={[]} shoot={[]} drib={[]} pass={[]} def={[]} phys={[]} />
+                <PlayerList stats={stats} />
             )}
         </>
     );
