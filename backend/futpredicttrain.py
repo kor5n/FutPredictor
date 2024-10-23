@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
-from sklearn.metrics import mean_absolute_error
-from sklearn.model_selection import cross_val_score
+#from sklearn.metrics import mean_absolute_error
+#from sklearn.model_selection import cross_val_score
 
 def position_type(a):
     b = ["GK", "LB", "CB", "RB", "CDM", "CM", "CAM", "LM", "RM", "LW", "RW", "ST"]
@@ -14,7 +14,6 @@ def position_type(a):
 
 
 def model_train():
-# Read the data
     X_train = pd.read_csv('fifaRatings.csv')
 
     X_train["Position"] = X_train["Position"].apply(position_type)
@@ -31,10 +30,9 @@ def model_train():
 
     my_model_2.fit(X_train, y_train) 
 
-    predictions_2 = my_model_2.predict(X_valid) 
+    #predictions_2 = my_model_2.predict(X_valid) 
 
-    mae_2 = mean_absolute_error(y_valid, predictions_2) 
-    #print(mae_2)
+    #mae_2 = mean_absolute_error(y_valid, predictions_2) 
     return my_model_2
 
 def model_predict(data):
@@ -45,7 +43,6 @@ def model_predict(data):
     model = model_train()
 
     X_test["Position"] = X_test["Position"].apply(position_type)
-    #X_test.drop(["OverallRating"], axis=1, inplace=True)             
     X_test.drop("PlayerName", axis=1, inplace=True)
 
     preds_test = model.predict(X_test)

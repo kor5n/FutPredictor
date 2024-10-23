@@ -3,7 +3,7 @@ import '../App.css'
 
 function Predictor() {
 
-  const [rating, setRating] = useState()
+  const [rating, setRating] = useState<string>()
 
   const [formData, setFormData] = useState({
     pname: '',
@@ -27,7 +27,7 @@ function Predictor() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
-    const sess = {
+    const sess:object = {
       "playername": formData.pname,
       "position": formData.position,
       "pace": formData.pace,
@@ -37,6 +37,7 @@ function Predictor() {
       "defending": formData.def,
       "physical": formData.phys
     }
+    console.log(sess)
     const options = {
       method: "POST",
       headers: {
@@ -44,15 +45,15 @@ function Predictor() {
       },
       body: JSON.stringify(sess)
     }
-    const response = await fetch("http://127.0.0.1:5000/b/predict", options)
-    const data = await response.json()
-    if(response.status == 200){
+    const response:Response = await fetch("http://127.0.0.1:5000/b/predict", options)
+    const data: { [key: string]: string } = await response.json()
+    if(Math.round(response.status / 100) * 100 === 200){
       setRating(data.message)
     }
   };
 
   return (
-    <div>
+    <div className='predict-div'>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="pname">Player Name</label><br />
@@ -61,6 +62,7 @@ function Predictor() {
         <div>
         <label htmlFor="position">Position</label><br />
           <select name="position" onChange={handleInputChange} value={formData.position}>
+            <option value="">Select position</option>
             <option value="GK">Goalkeeper</option>
             <option value="CB">Center Back</option>
             <option value="LB">Left Back</option>
@@ -76,18 +78,30 @@ function Predictor() {
           </select>
         </div>
         <div>
-          <label htmlFor="pace">Pace</label><br />
-          <input type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace}/><br />
-          <label htmlFor="shoot">Shooting</label><br />
-          <input type="number" name='shoot' min="0" max="99"  onChange={handleInputChange} value={formData.shoot}/><br />
-          <label htmlFor="pass">Passing</label><br />
-          <input type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass}/><br />
-          <label htmlFor="drib">Dribbling</label><br />
-          <input type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib}/><br />
-          <label htmlFor="def">Defending</label><br />
-          <input type="number" name='def' min="0" max="99"  onChange={handleInputChange} value={formData.def}/><br />
-          <label htmlFor="phys">Physical</label><br />
-          <input type="number" name='phys' min="0" max="99"  onChange={handleInputChange} value={formData.phys}/><br />
+          <div className='stat-div'>
+            <label htmlFor="pace">Pace</label>
+            <input className='stat-count' type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace}/>
+          </div>
+          <div className='stat-div'>
+            <label htmlFor="shoot">Shooting</label>
+            <input className='stat-count' type="number" name='shoot' min="0" max="99"  onChange={handleInputChange} value={formData.shoot}/>
+          </div>
+          <div className='stat-div'>
+            <label htmlFor="pass">Passing</label>
+            <input className='stat-count' type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass}/>
+          </div><br />
+          <div className='stat-div'>
+            <label htmlFor="drib">Dribbling</label>
+            <input className='stat-count' type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib}/>
+          </div>
+          <div className='stat-div'>
+            <label htmlFor="def">Defending</label>
+            <input className='stat-count' type="number" name='def' min="0" max="99"  onChange={handleInputChange} value={formData.def}/>
+          </div>
+          <div className='stat-div'>
+            <label htmlFor="phys">Physical</label>
+            <input className='stat-count' type="number" name='phys' min="0" max="99"  onChange={handleInputChange} value={formData.phys}/>
+          </div>
         </div>
         <div><input type="submit" value="Submit"/></div>
       </form>
