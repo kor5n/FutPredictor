@@ -77,7 +77,7 @@ function Predictor() {
             <option value="ST">Striker</option>
           </select>
         </div>
-        <div>
+        <div className='stat-container'>
           <div className='stat-div'>
             <label htmlFor="pace">Pace</label>
             <input className='stat-count' type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace}/>
