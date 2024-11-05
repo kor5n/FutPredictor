@@ -89,7 +89,7 @@ function Predictor() {
           <div className='stat-div'>
             <label htmlFor="pass">Passing</label>
             <input className='stat-count' type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass}/>
-          </div><br />
+          </div>
           <div className='stat-div'>
             <label htmlFor="drib">Dribbling</label>
             <input className='stat-count' type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib}/>
