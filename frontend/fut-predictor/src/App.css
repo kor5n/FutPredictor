@@ -22,7 +22,14 @@ input, select{
   font-size: medium;
 }
 .player-list{
+  display: block;
   margin-top: 2.5%;
+  text-align: center;
+  margin-left: auto;
+  height: fit-content;
+  width: fit-content;
+  margin-right: auto;
+  
 }
 .predict-div{
   display: flex;

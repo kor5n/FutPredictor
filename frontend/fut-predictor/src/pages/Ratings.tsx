@@ -11,7 +11,7 @@ export default function(){
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {
-                const sep:string = " "
+                const sep:string = "|"
                 let propList:string[] = ["Name" +sep+"position"+sep +"overall"+sep+ "pace"+sep+ "shooting" +sep+"passing"+sep+ "dribbling"+sep+ "defending"+sep+ "physical"] 
                 for (let i:number=0;i<data.pname.length;i++){
                     const tmp:string = data.pname[i].toString() +sep+ data.pos[i].toString() +sep+ data.ovr[i].toString() +sep+ data.pace[i].toString() +sep+ data.shoot[i].toString()
@@ -36,6 +36,7 @@ export default function(){
             setError(true);
           } else {
             setStats(names);
+            console.log(stats);
           }
         };
         

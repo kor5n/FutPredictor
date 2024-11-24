@@ -70,7 +70,7 @@ def scrap_section():
     
     output = pd.DataFrame({'PlayerName': names_list,'Position': pos_list, 'OverallRating': ovr_list, 'PaceRating': pace_list,
                             'ShootRating': sho_list, 'PassRating': pas_list, 'DribRating': dri_list, 'DefenseRating': def_list, 'PhysicalRating':phy_list})
-    output.to_csv('../ML/fifaRatings.csv', index=False)
+    output.to_csv('fifaRatings.csv', index=False)
     
 def scrap_stats(stats_list,div):
     stat_count = 1
