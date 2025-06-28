@@ -16,7 +16,7 @@ function Predictor() {
     phys: 0
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
@@ -24,7 +24,7 @@ function Predictor() {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     console.log(formData);
     const sess:object = {
@@ -45,7 +45,7 @@ function Predictor() {
       },
       body: JSON.stringify(sess)
     }
-    const response:Response = await fetch("http://127.0.0.1:5000/b/predict", options)
+    const response:Response = await fetch("/b/predict", options)
     const data: { [key: string]: string } = await response.json()
     if(Math.round(response.status / 100) * 100 === 200){
       setRating(data.message)

@@ -7,7 +7,7 @@ export default function(){
 
     const OnLoadFunc = async () =>{
         try {
-            const response: Response = await fetch("http://127.0.0.1:5000/b/stats");
+            const response: Response = await fetch("/b/stats");
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {

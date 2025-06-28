@@ -14,7 +14,7 @@ def position_type(a):
 
 
 def model_train():
-    X_train = pd.read_csv('fifaRatings.csv')
+    X_train = pd.read_csv('backend/fifaRatings.csv')
 
     X_train["Position"] = X_train["Position"].apply(position_type)
 

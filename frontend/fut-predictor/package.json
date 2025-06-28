@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bite": "^0.1.0-4",
+    "dotenv": "^16.5.0",
+    "npx": "^10.2.2",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/node": "^24.0.3",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",

@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
-from futpredicttrain import model_predict
+from .futpredicttrain import model_predict
 from flask_cors import CORS
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app, resources={r"/b/*": {"origins": "http://localhost:5173"}})
 
 @app.route("/b/predict", methods=["POST", "GET"])
 def predict_rating():
@@ -27,7 +26,7 @@ def predict_rating():
 
 @app.route("/b/stats", methods=["GET"])
 def upload_stats():
-    stats_csv = pd.read_csv("fifaRatings.csv")
+    stats_csv = pd.read_csv("backend/fifaRatings.csv")
     pname = list(stats_csv["PlayerName"])
     pos= list(stats_csv["Position"])
     ovr = list(stats_csv["OverallRating"])
