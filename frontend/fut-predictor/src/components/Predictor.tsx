@@ -26,7 +26,7 @@ function Predictor() {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    console.log(formData);
+    //console.log(formData);
     const sess:object = {
       "playername": formData.pname,
       "position": formData.position,
@@ -37,7 +37,7 @@ function Predictor() {
       "defending": formData.def,
       "physical": formData.phys
     }
-    console.log(sess)
+    //console.log(sess)
     const options = {
       method: "POST",
       headers: {
@@ -79,23 +79,23 @@ function Predictor() {
       </div>
       <div className='stat-container'>
         <div className='stat-div'>
-          <label htmlFor="pace">Pace</label>
+          <label htmlFor="pace">{formData.position === "GK" ? "Diving" : "Pace"}</label>
           <input className='stat-count' type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace}/>
         </div>
         <div className='stat-div'>
-          <label htmlFor="shoot">Shooting</label>
+          <label htmlFor="shoot">{formData.position === "GK" ? "Handling" : "Shooting"}</label>
           <input className='stat-count' type="number" name='shoot' min="0" max="99"  onChange={handleInputChange} value={formData.shoot}/>
         </div>
         <div className='stat-div'>
-          <label htmlFor="pass">Passing</label>
+          <label htmlFor="pass">{formData.position === "GK" ? "Kicking" : "Passing"}</label>
           <input className='stat-count' type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass}/>
         </div>
         <div className='stat-div'>
-          <label htmlFor="drib">Dribbling</label>
+          <label htmlFor="drib">{formData.position === "GK" ? "Positioning" : "Dribbling"}</label>
           <input className='stat-count' type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib}/>
         </div>
         <div className='stat-div'>
-          <label htmlFor="def">Defending</label>
+          <label htmlFor="def">{formData.position === "GK" ? "Reflexes" : "Defending"}</label>
           <input className='stat-count' type="number" name='def' min="0" max="99"  onChange={handleInputChange} value={formData.def}/>
         </div>
         <div className='stat-div'>
