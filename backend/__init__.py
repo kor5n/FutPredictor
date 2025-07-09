@@ -22,7 +22,7 @@ def predict_rating():
         return jsonify({"message": "We couldnt get all the stats"}), 400
     
     rating = model_predict([player_name, position, int(pace), int(shooting), int(passing), int(dribbling), int(defending), int(physical)])
-    return jsonify({"message" : str(rating)}), 200
+    return jsonify({"message" : str(rating)[4:]}), 200
 
 @app.route("/b/stats", methods=["GET"])
 def upload_stats():

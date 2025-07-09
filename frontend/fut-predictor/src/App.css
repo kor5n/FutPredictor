@@ -33,7 +33,7 @@ input, select{
 }
 .predict-div{
   display: flex;
-  scale: 1.25;
+  scale: 1.1;
   justify-content: center;
   margin-top: 8%;
   height: 60vh;
@@ -44,7 +44,7 @@ input, select{
   margin-bottom: 20%;
 }
 .stat-count{
-  width: 30%;
+  width: 35%;
   margin-left: 30%;
 }
 form{
@@ -56,4 +56,77 @@ form{
 
 .read-the-docs {
   color: #888;
+}
+.fifa-card {
+  width: 300px;
+  height: 400px;
+  background: whitesmoke;
+  clip-path: polygon(15% 0%,85% 0%,100% 16%,100% 78%,50% 100%,0% 78%,0% 16%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  margin: 5%;
+}
+.res-card{
+  padding-top: 60px;
+  display: none;
+}
+.upper-card{
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 50%;
+  font-size: xx-large;
+  border-bottom: none;
+}
+.middle-card{
+  height: 0px;
+  width: 100%;
+  border: 1px solid grey;
+}
+.lower-card{
+  font-size: x-large;
+  padding-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 50%;
+  width: 100%;
+  border-top: none;
+}
+.pl-name{
+  width: 70%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid grey;
+}
+.left-stats{
+  padding: 3%;
+  border-right: 0.5px solid grey;
+  padding-right: 5%;
+}
+.right-stats{
+  border-left: 0.5px solid grey;
+  padding: 3%;
+  padding-left: 5%;
+}
+.stat-coll{
+  display: flex;
+  height: 70%;
+  width: 70%;
+  margin-top: 1%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.stat-label{
+  margin-bottom: 4%;
+}
+.border-line{
+  margin-top: 2%;
+  width: 50px;
+  height: 0px;
+  border: 0.5px solid grey;
+}
+.res-pos{
+  font-size: x-large;
 }
