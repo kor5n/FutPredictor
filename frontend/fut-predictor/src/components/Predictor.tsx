@@ -28,9 +28,6 @@ function Predictor() {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-<<<<<<< HEAD
-=======
->>>>>>> 7fe5e15 (Added a new football card result without the fifa card images)
     const sess:object = {
       "playername": formData.pname,
       "position": formData.position,
@@ -41,9 +38,6 @@ function Predictor() {
       "defending": formData.def,
       "physical": formData.phys
     }
-<<<<<<< HEAD
-=======
->>>>>>> 7fe5e15 (Added a new football card result without the fifa card images)
     const options = {
       method: "POST",
       headers: {
