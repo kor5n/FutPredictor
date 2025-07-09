@@ -82,27 +82,27 @@ function Predictor() {
           <div className='stat-container'>
             <div className='stat-div'>
               <label htmlFor="pace">{formData.position === "GK" ? "Diving" : "Pace"}</label>
-              <input className='stat-count' type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace}/>
+              <input className='stat-count' type="number" name='pace' min="0" max="99"  onChange={handleInputChange} value={formData.pace === 0? "" : formData.pace}/>
             </div>
             <div className='stat-div'>
               <label htmlFor="shoot">{formData.position === "GK" ? "Handling" : "Shooting"}</label>
-              <input className='stat-count' type="number" name='shoot' min="0" max="99"  onChange={handleInputChange} value={formData.shoot}/>
+              <input className='stat-count' type="number" name='shoot' min="0" max="99"  onChange={handleInputChange} value={formData.shoot === 0 ? "" : formData.shoot}/>
             </div>
             <div className='stat-div'>
               <label htmlFor="pass">{formData.position === "GK" ? "Kicking" : "Passing"}</label>
-              <input className='stat-count' type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass}/>
+              <input className='stat-count' type="number" name='pass' min="0" max="99"  onChange={handleInputChange} value={formData.pass === 0? "" : formData.pass}/>
             </div>
             <div className='stat-div'>
               <label htmlFor="drib">{formData.position === "GK" ? "Positioning" : "Dribbling"}</label>
-              <input className='stat-count' type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib}/>
+              <input className='stat-count' type="number" name='drib' min="0" max="99"  onChange={handleInputChange} value={formData.drib === 0? "" : formData.drib}/>
             </div>
             <div className='stat-div'>
               <label htmlFor="def">{formData.position === "GK" ? "Reflexes" : "Defending"}</label>
-              <input className='stat-count' type="number" name='def' min="0" max="99"  onChange={handleInputChange} value={formData.def}/>
+              <input className='stat-count' type="number" name='def' min="0" max="99"  onChange={handleInputChange} value={formData.def === 0? "" : formData.def}/>
             </div>
             <div className='stat-div'>
               <label htmlFor="phys">Physical</label>
-              <input className='stat-count' type="number" name='phys' min="0" max="99"  onChange={handleInputChange} value={formData.phys}/>
+              <input className='stat-count' type="number" name='phys' min="0" max="99"  onChange={handleInputChange} value={formData.phys === 0? "" : formData.phys}/>
             </div>
           </div>
           <div><input type="submit" value="Submit"/></div>
