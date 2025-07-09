@@ -1,7 +1,7 @@
 # FutPredictor
 Predicting your fifa(eafc) rating
 
-# ToDo
-A way to switch between pages (header)
+# ToDo 
+Search on database page
 
 Better css
