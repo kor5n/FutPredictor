@@ -37,6 +37,7 @@ input, select{
   justify-content: center;
   margin-top: 8%;
   height: 60vh;
+  flex-wrap: wrap;
 }
 .rating-text{
   display: inline;
