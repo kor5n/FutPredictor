@@ -23,7 +23,10 @@ def predict_rating():
         return jsonify({"message": "We couldnt get all the stats"}), 400
     
     rating = model_predict([player_name, position, int(pace), int(shooting), int(passing), int(dribbling), int(defending), int(physical)])
-    return jsonify({"message" : str(rating)[4:]}), 200
+    try:
+        return jsonify({"message" : str(rating)[4:]}), 200
+    except Exception as e:
+        return jsonify({"message" : e}), 400
 
 @app.route("/b/stats", methods=["GET"])
 def upload_stats():
@@ -38,8 +41,11 @@ def upload_stats():
     defend= list(stats_csv["DefenseRating"])
     phys= list(stats_csv["PhysicalRating"])
 
-    return jsonify({"message":"Uploading data succesfully", "pname":pname, "pos":pos, "ovr":ovr, "pace":pace,
+    try:
+        return jsonify({"message":"Uploading data succesfully", "pname":pname, "pos":pos, "ovr":ovr, "pace":pace,
                     "shoot":shoot, "pass": passing, "drib": drib, "def":defend, "phys":phys}), 200
+    except Exception as e:
+        return jsonify({"message": e}), 400
 
 if __name__ == "__main__":
     app.run(debug=True)
