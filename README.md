@@ -2,6 +2,6 @@
 Predicting your fifa(eafc) rating
 
 # ToDo
-A way to switch between pages (header)
+Searching through playerlist
 
-Better css
+styled playerlist component
