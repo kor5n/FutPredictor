@@ -3,6 +3,7 @@ import Ratings from './pages/Ratings'
 import PredictorPage from './pages/PredictorPage'
 import Header from './components/Header'
 import MainPage from './pages/MainPage'
+import Footer from "./components/Footer"
 
 export default function App(){
     return(
@@ -17,6 +18,7 @@ export default function App(){
                     </Routes>
                 </BrowserRouter>
             </main>
+            <Footer></Footer>
         </>
     )
 }

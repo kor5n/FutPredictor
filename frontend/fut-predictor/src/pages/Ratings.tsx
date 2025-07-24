@@ -36,7 +36,6 @@ export default function(){
             setError(true);
           } else {
             setStats(names);
-            console.log(stats);
           }
         };
         
