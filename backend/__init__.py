@@ -22,22 +22,11 @@ def predict_rating():
         return jsonify({"message": "We couldnt get all the stats"}), 400
     
     rating = model_predict([player_name, position, int(pace), int(shooting), int(passing), int(dribbling), int(defending), int(physical)])
-<<<<<<< HEAD:backend/__init__.py
     return jsonify({"message" : str(rating)[-2:]}), 200
-
-@app.route("/b/stats", methods=["GET"])
-def upload_stats():
-    stats_csv = pd.read_csv("backend/fifaRatings.csv")
-=======
-    try:
-        return jsonify({"message" : str(rating)[4:]}), 200
-    except Exception as e:
-        return jsonify({"message" : e}), 400
 
 @app.route("/b/stats/<string:search_prompt>", methods=["GET"])
 def upload_stats(search_prompt):
     stats_csv = pd.read_csv("fifaRatings.csv")
->>>>>>> local:backend/main.py
     pname = list(stats_csv["PlayerName"])
     pos= list(stats_csv["Position"])
     ovr = list(stats_csv["OverallRating"])
