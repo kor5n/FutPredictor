@@ -2,6 +2,6 @@
 Predicting your fifa(eafc) rating
 
 # ToDo
-Searching through playerlist
+Add sharing + choosing player image for predicted rating card
 
-styled playerlist component
+styled playerlist component + search bar
