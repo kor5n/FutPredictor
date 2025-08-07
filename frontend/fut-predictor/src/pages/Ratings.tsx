@@ -20,7 +20,7 @@ export default function(){
 
     const LoadFunc = async () =>{
         try {
-            const response: Response = await fetch("/b/stats");
+            const response: Response = await fetch("/b/stats/"+searchPrompt);
 
             const data: { [key: string]: (string | number)[] } = await response.json();
       

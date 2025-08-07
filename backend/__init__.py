@@ -26,7 +26,7 @@ def predict_rating():
 
 @app.route("/b/stats/<string:search_prompt>", methods=["GET"])
 def upload_stats(search_prompt):
-    stats_csv = pd.read_csv("fifaRatings.csv")
+    stats_csv = pd.read_csv("backend/fifaRatings.csv")
     pname = list(stats_csv["PlayerName"])
     pos= list(stats_csv["Position"])
     ovr = list(stats_csv["OverallRating"])
