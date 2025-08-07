@@ -5,7 +5,7 @@ import "../assets/ratings.css"
 export default function(){
     const [error, setError] = useState<boolean>(false);
     const [stats, setStats] = useState<string[]>([]);
-    const [searchPrompt, setPrompt] = useState<string>("null");
+    const [searchPrompt, setPrompt] = useState<string>("");
     const [pageNum, setPage] = useState<number>(1);
 
     const ChangePrompt = (event: any) => {
@@ -23,7 +23,13 @@ export default function(){
 
     const LoadFunc = async () =>{
         try {
-            const response: Response = await fetch("/b/stats/"+searchPrompt);
+            let tmp_prompt:string = ""
+            if (searchPrompt === ""){
+              tmp_prompt = "null"
+            }else{
+              tmp_prompt = searchPrompt
+            }
+            const response: Response = await fetch("/b/stats/"+tmp_prompt);
 
             const data: { [key: string]: (string | number)[] } = await response.json();
       
