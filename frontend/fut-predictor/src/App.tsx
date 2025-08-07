@@ -3,12 +3,13 @@ import Ratings from './pages/Ratings'
 import PredictorPage from './pages/PredictorPage'
 import Header from './components/Header'
 import MainPage from './pages/MainPage'
+import Footer from "./components/Footer"
 
 export default function App(){
     return(
-        <>
+        <div className='app-container'>
             <Header />
-            <main>
+            <main className='main-container'>
                 <BrowserRouter>
                     <Routes>
                         <Route path='/' element={<MainPage />}/>
@@ -17,6 +18,7 @@ export default function App(){
                     </Routes>
                 </BrowserRouter>
             </main>
-        </>
+            <Footer></Footer>
+        </div>
     )
 }

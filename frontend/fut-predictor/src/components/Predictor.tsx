@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import '../App.css'
+import Card from "./Card.tsx"
 
 function Predictor() {
 
   const [rating, setRating] = useState<string>("")
-
-  const [cardDisplay, setCardDisplay] = useState<string>("none")
+  const [cardDisplay, setCardDisplay] = useState<"none" | "block">("none")
 
   const [formData, setFormData] = useState({
     pname: '',
@@ -108,29 +108,7 @@ function Predictor() {
           <div><input type="submit" value="Submit"/></div>
         </form>
       </div>
-      <div className='fifa-card res-card' style={{"display" : cardDisplay, "background": +rating >= 75 ? 'gold' : +rating >= 65 ? 'silver' : '#CE8946'}}>
-          <div className='upper-card'>
-            <p>{rating}</p>
-            <p className='res-pos'>{formData.position}</p>
-          </div>
-          <div className='middle-card'></div>
-          <div className='lower-card'>
-            <div className='pl-name'><p>{formData.pname}</p></div>
-            <div className='stat-coll'>
-              <div className='left-stats'>
-                <p className='stat-label'>{formData.pace} {formData.position === "GK" ? "DIV" : "PAC"}</p>
-                <p className='stat-label'>{formData.shoot} {formData.position === "GK" ? "KIC" : "SHO"}</p>
-                <p className='stat-label'>{formData.pass} {formData.position === "GK" ? "REF" : "PAS"}</p>
-              </div>
-              <div className='right-stats'>
-                <p className='stat-label'>{formData.drib} {formData.position === "GK" ? "HAN" : "DRI"}</p>
-                <p className='stat-label'>{formData.def} {formData.position === "GK" ? "POS" : "DEF"}</p>
-                <p className='stat-label'>{formData.phys} PHY</p>
-              </div>
-              <div className='border-line'></div>
-            </div>
-          </div>
-      </div>
+      <Card name={formData.pname} rating={rating} display={cardDisplay} pos={formData.position} stats={[formData.pace, formData.shoot, formData.pass, formData.drib, formData.def, formData.phys]}/>
   </div>
   
     

@@ -65,8 +65,8 @@ def scrap_section():
     #for i in range(10):
         #print(ovr_list[i], pace_list[i], sho_list[i], pas_list[i], dri_list[i], def_list[i], phy_list[i])
 
-    for i in range(len(names_list)):
-        print(names_list[i], pos_list[i], ovr_list[i], pace_list[i], sho_list[i], pas_list[i], dri_list[i], def_list[i], phy_list[i])
+    #for i in range(len(names_list)):
+        #print(names_list[i], pos_list[i], ovr_list[i], pace_list[i], sho_list[i], pas_list[i], dri_list[i], def_list[i], phy_list[i])
     
     output = pd.DataFrame({'PlayerName': names_list,'Position': pos_list, 'OverallRating': ovr_list, 'PaceRating': pace_list,
                             'ShootRating': sho_list, 'PassRating': pas_list, 'DribRating': dri_list, 'DefenseRating': def_list, 'PhysicalRating':phy_list})
