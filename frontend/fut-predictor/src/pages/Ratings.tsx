@@ -23,7 +23,14 @@ export default function(){
 
     const LoadFunc = async () =>{
         try {
-            const response: Response = await fetch("http://127.0.0.1:5000/b/stats/"+searchPrompt);
+            let tmp_prompt:string = ""
+            if (searchPrompt === ""){
+              tmp_prompt = "null"
+            }else{
+              tmp_prompt = searchPrompt
+            }
+
+            const response: Response = await fetch("http://127.0.0.1:5000/b/stats/"+tmp_prompt);
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {
