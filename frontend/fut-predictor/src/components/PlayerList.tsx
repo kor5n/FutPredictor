@@ -2,11 +2,12 @@ import '../App.css'
 import "../assets/playerlist.css"
 import { useEffect, useState } from 'react'
 
-interface PlayerData {
-    stats: string[]
+interface Props {
+    stats: string[],
+    search_query?: string,
 }
 
-export default function PlayerList({stats} : PlayerData){
+export default function PlayerList({stats} : Props){
 
     const [showFirst, setShowFirst] = useState(true)
 

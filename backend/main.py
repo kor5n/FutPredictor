@@ -28,8 +28,8 @@ def predict_rating():
     except Exception as e:
         return jsonify({"message" : e}), 400
 
-@app.route("/b/stats", methods=["GET"])
-def upload_stats():
+@app.route("/b/stats/<string:search_prompt>", methods=["GET"])
+def upload_stats(search_prompt):
     stats_csv = pd.read_csv("fifaRatings.csv")
     pname = list(stats_csv["PlayerName"])
     pos= list(stats_csv["Position"])
@@ -40,7 +40,12 @@ def upload_stats():
     drib= list(stats_csv["DribRating"])
     defend= list(stats_csv["DefenseRating"])
     phys= list(stats_csv["PhysicalRating"])
-
+    if search_prompt != "null":
+        combined = list(zip(pname, pos, ovr, pace, shoot, passing, drib, defend, phys))
+        filtered = [entry for entry in combined if search_prompt.lower() in str(entry[0]).lower()]
+        pname, pos, ovr, pace, shoot, passing, drib, defend, phys = zip(*filtered) if filtered else ([], [], [], [], [], [], [], [], [])
+        pname, pos, ovr, pace, shoot, passing, drib, defend, phys = map(list, (pname, pos, ovr, pace, shoot, passing, drib, defend, phys))
+    
     try:
         return jsonify({"message":"Uploading data succesfully", "pname":pname, "pos":pos, "ovr":ovr, "pace":pace,
                     "shoot":shoot, "pass": passing, "drib": drib, "def":defend, "phys":phys}), 200

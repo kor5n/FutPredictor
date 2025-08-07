@@ -7,9 +7,9 @@ import Footer from "./components/Footer"
 
 export default function App(){
     return(
-        <>
+        <div className='app-container'>
             <Header />
-            <main>
+            <main className='main-container'>
                 <BrowserRouter>
                     <Routes>
                         <Route path='/' element={<MainPage />}/>
@@ -19,6 +19,6 @@ export default function App(){
                 </BrowserRouter>
             </main>
             <Footer></Footer>
-        </>
+        </div>
     )
 }

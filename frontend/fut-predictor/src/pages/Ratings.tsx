@@ -4,10 +4,23 @@ import PlayerList from "../components/PlayerList"
 export default function(){
     const [error, setError] = useState<boolean>(false);
     const [stats, setStats] = useState<string[]>([]);
+    const [searchPrompt, setPrompt] = useState<string>("null");
 
-    const OnLoadFunc = async () =>{
+    const ChangePrompt = (event: any) => {
+      const { value } = event.target;
+      setPrompt(
+        value
+      );
+  };
+
+    const SubmitPrompt = async (event : any) =>{
+      event.preventDefault();
+      await fetchData();
+    }
+
+    const LoadFunc = async () =>{
         try {
-            const response: Response = await fetch("http://127.0.0.1:5000/b/stats");
+            const response: Response = await fetch("http://127.0.0.1:5000/b/stats/"+searchPrompt);
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {
@@ -27,28 +40,31 @@ export default function(){
             return [];
           }
     }
-    
 
-    useEffect(() => {
-        const fetchData = async () => {
-          const names = await OnLoadFunc();
+    const fetchData = async () => {
+          const names = await LoadFunc();
           if (names.length === 0) {
             setError(true);
           } else {
             setStats(names);
           }
-        };
-        
-        fetchData();
-      }, []);
+    };
+
+    useEffect(() =>{ 
+      fetchData()
+    }, [])
 
     return(
         <>
-            {error ? (
-                <p>Error loading player names.</p>
-            ) : (
-                <PlayerList stats={stats} />
-            )}
+          <form onSubmit={SubmitPrompt}>
+            <input type="text" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
+            <input type="submit" />
+          </form>
+          {error ? (
+              <p>Error loading player names.</p>
+          ) : (
+              <PlayerList stats={stats} />
+          )}
         </>
     );
         
