@@ -5,7 +5,7 @@ import "../assets/ratings.css"
 export default function(){
     const [error, setError] = useState<boolean>(false);
     const [stats, setStats] = useState<string[]>([]);
-    const [searchPrompt, setPrompt] = useState<string>("null");
+    const [searchPrompt, setPrompt] = useState<string>("");
     const [pageNum, setPage] = useState<number>(1);
 
     const ChangePrompt = (event: any) => {
@@ -75,10 +75,12 @@ export default function(){
 
     return(
         <>
-          <form onSubmit={SubmitPrompt}>
-            <input type="text" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
-            <input type="submit" />
+	  <div class="form-div">
+          <form class="search-form" onSubmit={SubmitPrompt}>
+            <input type="text" placeholder="Player name" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
+            <input type="submit" class="search-btn"></input>
           </form>
+	  </div>
           {error ? (
               <p>Error loading player names.</p>
           ) : (
