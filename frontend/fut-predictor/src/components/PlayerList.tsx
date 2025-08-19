@@ -13,10 +13,12 @@ interface ListItemProps{
 }
 
 function ListItem({item, index}:ListItemProps){
+    const classArray : string[] = []
+
     return(
         <tr key={index}>
             {item.split("|").map((el, index) => (
-                <th key={index}><p className='player-text'>{el}</p></th>
+                <th key={index}><p className={index === 0 ? 'player-text pname' : 'player-text'}>{el}</p></th>
             ))}
         </tr>
     )
@@ -25,13 +27,14 @@ function ListItem({item, index}:ListItemProps){
 export default function PlayerList({stats, page} : Props){
 
     
-
+    const [refTable, setRefTable] = useState<string>();
     const [showFirst, setShowFirst] = useState(true);
     const [splitStats, setSplit] = useState<string[][]>();
 
     useEffect(() => {
         if(stats.length > 0) {
-        
+	    setRefTable(stats[0]);
+	    stats.shift();
             let tmp_array: string[][] = [];
             let tmp_element: string[] = [];
 
@@ -62,10 +65,12 @@ export default function PlayerList({stats, page} : Props){
             {!showFirst && (
             <table className='player-table'>
                 {splitStats && splitStats[0] ? (
-                    splitStats[page -1].map((item, index) => (
-                        <ListItem item={item} index={index} key={index} />
-                    ))
-                    ) : (
+		    <>
+			<ListItem item={refTable} index={0} key={0}/>
+			{splitStats[page -1].map((item, index) => (
+                        <ListItem item={item} index={index +1} key={index+1} />))}
+	            </>
+	        ) : (
                     <p>Loading or no data</p>
                 )}
             </table>)}

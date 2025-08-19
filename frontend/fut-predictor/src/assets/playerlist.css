@@ -11,3 +11,6 @@ th{
 tr{
     border: 2px solid black;
 }
+.pname{
+    font-weight: 600;
+}
