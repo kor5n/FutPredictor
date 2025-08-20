@@ -1,16 +1,34 @@
 .player-table{
-    border-top: 2px solid black;
+    /*border-top: 2px solid black;
     border-bottom: 2px solid black;
-    border-left: 2px solid black;
+    border-left: 2px solid black;*/
 }
 th{
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    /*border-right: 2px solid black;
+    border-bottom: 2px solid black;*/
     padding: 5px;
 }
 tr{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 }
 .pname{
     font-weight: 600;
 }
+.first-table{
+    background-color: #333;
+    color: white;
+    border: none;
+}
+.second-row{
+    background-color: #eee;
+}
+
+@media only screen and (max-width: 600px){
+    .player-table{
+        font-size: 0.4em;
+    }
+}
+
+
+
+

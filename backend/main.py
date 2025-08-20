@@ -9,6 +9,7 @@ CORS(app, resources={r"/b/*": {"origins": "http://localhost:5173"}})
 @app.route("/b/predict", methods=["POST", "GET"])
 def predict_rating():
     player_name = request.json.get("playername")
+    print(player_name)
     position = request.json.get("position")
     pace = request.json.get("pace")
     shooting = request.json.get("shooting")
@@ -23,8 +24,9 @@ def predict_rating():
         return jsonify({"message": "We couldnt get all the stats"}), 400
     
     rating = model_predict([player_name, position, int(pace), int(shooting), int(passing), int(dribbling), int(defending), int(physical)])
+    print(rating)
     try:
-        return jsonify({"message" : str(rating)[4:]}), 200
+        return jsonify({"message" : str(rating.split(":")[1])}), 200
     except Exception as e:
         return jsonify({"message" : e}), 400
 

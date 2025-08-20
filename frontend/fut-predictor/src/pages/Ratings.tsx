@@ -75,10 +75,10 @@ export default function(){
 
     return(
         <>
-	  <div class="form-div">
-          <form class="search-form" onSubmit={SubmitPrompt}>
+	  <div className="form-div">
+          <form className="search-form" onSubmit={SubmitPrompt}>
             <input type="text" placeholder="Player name" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
-            <input type="submit" class="search-btn"></input>
+            <input type="submit" className="search-btn"></input>
           </form>
 	  </div>
           {error ? (

@@ -10,13 +10,13 @@ interface Props {
 interface ListItemProps{
     item: string,
     index: number,
+    xtraClass?: string,
 }
 
-function ListItem({item, index}:ListItemProps){
+function ListItem({item, index, xtraClass}:ListItemProps){
     const classArray : string[] = []
-
     return(
-        <tr key={index}>
+        <tr className={xtraClass} key={index}>
             {item.split("|").map((el, index) => (
                 <th key={index}><p className={index === 0 ? 'player-text pname' : 'player-text'}>{el}</p></th>
             ))}
@@ -65,11 +65,11 @@ export default function PlayerList({stats, page} : Props){
             {!showFirst && (
             <table className='player-table'>
                 {splitStats && splitStats[0] ? (
-		    <>
-			<ListItem item={refTable} index={0} key={0}/>
+		    <tbody>
+			<ListItem item={refTable} index={0} key={0} xtraClass={"first-table"}/>
 			{splitStats[page -1].map((item, index) => (
-                        <ListItem item={item} index={index +1} key={index+1} />))}
-	            </>
+                        <ListItem item={item} index={index +1} key={index+1} xtraClass={(index + 1) % 2 === 0 ? 'second-row': undefined} />))}
+	            </tbody>
 	        ) : (
                     <p>Loading or no data</p>
                 )}
