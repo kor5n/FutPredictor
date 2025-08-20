@@ -75,9 +75,12 @@ export default function(){
 
     return(
         <>
-          <form onSubmit={SubmitPrompt}>
-            <input type="text" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
-            <input type="submit" />
+	  <div className="form-div">
+              <form className="search-form" onSubmit={SubmitPrompt}>
+	      <input type="text" placeholder="Player name" className="player-search" name="prompt" value={searchPrompt} onChange={ChangePrompt}></input>
+	      <input type="submit" className="search-btn"></input>
+	  </div>
+>>>>>>> 74a9049 (added adaptive css for mobiles and added better styling for ratings table)
           </form>
           {error ? (
               <p>Error loading player names.</p>

@@ -10,11 +10,12 @@ interface Props {
 interface ListItemProps{
     item: string,
     index: number,
+    xtraClass?: string,
 }
 
-function ListItem({item, index}:ListItemProps){
+function ListItem({item, index, xtraClass}:ListItemProps){
     return(
-        <tr key={index}>
+        <tr className={xtraClass} key={index}>
             {item.split("|").map((el, index) => (
                 <th key={index}><p className='player-text'>{el}</p></th>
             ))}
@@ -62,10 +63,19 @@ export default function PlayerList({stats, page} : Props){
             {!showFirst && (
             <table className='player-table'>
                 {splitStats && splitStats[0] ? (
+<<<<<<< HEAD
                     splitStats[page -1].map((item, index) => (
                         <ListItem item={item} index={index} key={index} />
                     ))
                     ) : (
+=======
+		    <tbody>
+			<ListItem item={refTable} index={0} key={0} xtraClass={"first-table"}/>
+			{splitStats[page -1].map((item, index) => (
+                        <ListItem item={item} index={index +1} key={index+1} xtraClass={(index + 1) % 2 === 0 ? 'second-row': undefined} />))}
+	            </tbody>
+	        ) : (
+>>>>>>> 74a9049 (added adaptive css for mobiles and added better styling for ratings table)
                     <p>Loading or no data</p>
                 )}
             </table>)}
