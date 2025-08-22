@@ -7,7 +7,7 @@ import Footer from "./components/Footer"
 
 export default function App(){
     return(
-        <div className='app-container'>
+	<>
             <Header />
             <main className='main-container'>
                 <BrowserRouter>
@@ -19,6 +19,6 @@ export default function App(){
                 </BrowserRouter>
             </main>
             <Footer></Footer>
-        </div>
+	</>
     )
 }

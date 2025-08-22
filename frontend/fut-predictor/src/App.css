@@ -1,6 +1,7 @@
 main {
   margin: 0 auto;
   text-align: center;
+  height: max-content;
 }
 .player-text{
   font-size: larger;
@@ -36,7 +37,6 @@ input, select{
   scale: 1.1;
   justify-content: center;
   margin-top: 8%;
-  height: 60vh;
   flex-wrap: wrap;
 }
 .rating-text{
@@ -74,7 +74,7 @@ form{
   display: none;
 }
 .upper-card{
-  text-align: left;
+  /*text-align: left;*/
   padding-left: 40px;
   padding-right: 40px;
   height: 50%;
@@ -94,6 +94,7 @@ form{
   height: 50%;
   width: 100%;
   border-top: none;
+  text-align: center;
 }
 .pl-name{
   width: 70%;

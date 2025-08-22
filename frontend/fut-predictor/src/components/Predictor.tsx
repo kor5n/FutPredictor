@@ -108,7 +108,7 @@ function Predictor() {
           <div><input type="submit" value="Submit"/></div>
         </form>
       </div>
-      <Card name={formData.pname} rating={rating} display={cardDisplay} pos={formData.position} stats={[formData.pace, formData.shoot, formData.pass, formData.drib, formData.def, formData.phys]}/>
+      <Card name={formData.pname} rating={rating} display={cardDisplay} pos={formData.position} stats={[formData.pace, formData.shoot, formData.pass, formData.drib, formData.def, formData.phys]} image={false}/>
   </div>
   
     
