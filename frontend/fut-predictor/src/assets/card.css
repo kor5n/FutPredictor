@@ -1,0 +1,43 @@
+.img-btn{
+    background-color: white;
+    color: black;
+    scale: 0.5;
+    margin-right: 4%; /*tmp*/
+}
+
+.upper-u{
+    text-align: left;
+}
+.upper-l{
+    text-align:center;
+    scale: 1.1;
+    height: fit-content;
+    margin-bottom: 50%;
+    
+}
+.profile-img{
+    height: 40%;
+    width: 40%;
+    margin-bottom: 70%;
+}
+
+.upload-wrapper{
+    position:relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 4%;
+    height: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.upload-wrapper input[type="file"] {
+    position: absolute;
+    top: 16px;
+    left: 21.5px;
+    font-size: 100%;
+    opacity: 0;
+    height: 45%;
+    width: 45%;
+}
+
+

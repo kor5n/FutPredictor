@@ -12,8 +12,10 @@ a:hover {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden; 
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 h1 {

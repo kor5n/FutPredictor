@@ -1,5 +1,9 @@
 footer{
-    text-align:center; padding:1rem; font-size:0.9rem; color:#aaa;
+    text-align:center; 
+    padding:1rem; 
+    font-size:1.2rem; 
+    color:#aaa;
+    margin-top: 5%;  
 }
 
 @media only screen and (max-width: 600px){
