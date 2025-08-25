@@ -18,12 +18,13 @@ function ImageBtn(){
 	const file = e.target.files[0];
 	if (file && file.type.startsWith("image/")){
 	    setImg(file);
-	    console.log(img);
 	}
 	setBtnDimen(["37%", "-10px", "55px"]);
     };
 
     return(
+	<>
+	{img !== false &&(	
         <div className="upload-wrapper">
 	    {img === "" ? (
 	  	<button className="img-btn">+</button>  
@@ -34,7 +35,8 @@ function ImageBtn(){
 	    accept={"image/*"}
 	    onChange={uploadImg}
 	    style={{height: btnDimen[0], width: btnDimen[0], top: btnDimen[1], left: btnDimen[2]}}/>
-	</div>
+	</div>)}
+	</>
     );
 }
 
