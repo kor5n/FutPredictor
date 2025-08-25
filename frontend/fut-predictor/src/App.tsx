@@ -4,6 +4,7 @@ import PredictorPage from './pages/PredictorPage'
 import Header from './components/Header'
 import MainPage from './pages/MainPage'
 import Footer from "./components/Footer"
+import Player from "./pages/Player.tsx"
 
 export default function App(){
     return(
@@ -15,6 +16,7 @@ export default function App(){
                         <Route path='/' element={<MainPage />}/>
                         <Route path='/ratings' element={<Ratings />} />
                         <Route path='/predict' element={<PredictorPage />} />
+			<Route path='/player/:id' element={<Player />}/>
                     </Routes>
                 </BrowserRouter>
             </main>

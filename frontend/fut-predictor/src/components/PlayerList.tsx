@@ -17,8 +17,8 @@ function ListItem({item, index, xtraClass}:ListItemProps){
     const classArray : string[] = []
     return(
         <tr className={xtraClass} key={index}>
-            {item.split("|").map((el, index) => (
-                <th key={index}><p className={index === 0 ? 'player-text pname' : 'player-text'}>{el}</p></th>
+            {item.split("|").map((el, indx) => (
+                <th key={indx}><p className={indx === 0 ? 'player-text pname' : 'player-text'}>{indx === 0 && index >= 1 ? (<a href={"/player/"+(index -1).toString()} >{el}</a>) : el }</p></th>
             ))}
         </tr>
     )

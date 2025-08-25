@@ -54,5 +54,23 @@ def upload_stats(search_prompt):
     except Exception as e:
         return jsonify({"message": e}), 400
 
+@app.route("/b/player/<int:i>", methods = ["GET"])
+def get_player(i):
+    stats_csv = pd.read_csv("fifaRatings.csv")
+    pname = list(stats_csv["PlayerName"])
+    pos= list(stats_csv["Position"])
+    ovr = list(stats_csv["OverallRating"])
+    pace= list(stats_csv["PaceRating"])
+    shoot= list(stats_csv["ShootRating"])
+    passing= list(stats_csv["PassRating"])
+    drib= list(stats_csv["DribRating"])
+    defend= list(stats_csv["DefenseRating"])
+    phys= list(stats_csv["PhysicalRating"])
+
+    try:
+        return jsonify({"message": f"Succesfully got {pname[i]}",  "pname":pname[i], "pos" : pos[i], "ovr" : ovr[i],"stats" : [int(pace[i]),int(shoot[i]), int(passing[i]), int(drib[i]), int(defend[i]), int(phys[i])]}), 200
+    except Exception as e: 
+        return jsonify({"message": e}), 400
+
 if __name__ == "__main__":
     app.run(debug=True)
