@@ -23,8 +23,7 @@ function ImageBtn(){
     };
 
     return(
-	<>
-	{img &&(	
+	<>	
         <div className="upload-wrapper">
 	    {img ? (
 	        <img className="profile-img" src={URL.createObjectURL(img)} />)   
@@ -36,7 +35,7 @@ function ImageBtn(){
 	    accept={"image/*"}
 	    onChange={uploadImg}
 	    style={{height: btnDimen[0], width: btnDimen[0], top: btnDimen[1], left: btnDimen[2]}}/>
-	</div>)}
+	</div>
 	</>
     );
 }
