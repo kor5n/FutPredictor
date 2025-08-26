@@ -1,5 +1,5 @@
 import "../assets/card.css";
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 interface Stats {
     name: string;
@@ -11,11 +11,11 @@ interface Stats {
 }
 
 function ImageBtn(){
-    const [img, setImg] = useState<string>("");
+    const [img, setImg] = useState<File | null>(null);
     const [btnDimen, setBtnDimen] = useState<string[]>([]);
 
-    const uploadImg = (e) => {
-	const file = e.target.files[0];
+    const uploadImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const file = e.target.files?.[0];
 	if (file && file.type.startsWith("image/")){
 	    setImg(file);
 	}
@@ -24,12 +24,13 @@ function ImageBtn(){
 
     return(
 	<>
-	{img !== false &&(	
+	{img &&(	
         <div className="upload-wrapper">
-	    {img === "" ? (
-	  	<button className="img-btn">+</button>  
-	    ) 
-   	    : (<img className="profile-img" src={URL.createObjectURL(img)} />)}
+	    {img ? (
+	        <img className="profile-img" src={URL.createObjectURL(img)} />)   
+	    
+   	    : (
+	    	<button className="img-btn">+</button>)} 
 	    <input
 	    type={"file"}
 	    accept={"image/*"}

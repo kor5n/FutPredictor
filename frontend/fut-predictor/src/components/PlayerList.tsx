@@ -26,13 +26,14 @@ function ListItem({item, index, xtraClass}:ListItemProps){
 export default function PlayerList({stats, page} : Props){
 
     
-
+    const [refTable, setRefTable] = useState<string>("");
     const [showFirst, setShowFirst] = useState(true);
     const [splitStats, setSplit] = useState<string[][]>();
 
     useEffect(() => {
         if(stats.length > 0) {
-        
+            setRefTable(stats[0]);
+	    stats.shift();
             let tmp_array: string[][] = [];
             let tmp_element: string[] = [];
 

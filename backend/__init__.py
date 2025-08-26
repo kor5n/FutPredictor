@@ -53,7 +53,7 @@ def upload_stats(search_prompt):
 
 @app.route("/b/player/<int:i>", methods = ["GET"])
 def get_player(i):
-    stats_csv = pd.read_csv("fifaRatings.csv")
+    stats_csv = pd.read_csv("backend/fifaRatings.csv")
     pname = list(stats_csv["PlayerName"])
     pos= list(stats_csv["Position"])
     ovr = list(stats_csv["OverallRating"])

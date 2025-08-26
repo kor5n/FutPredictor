@@ -8,7 +8,7 @@ export default function (){
     useEffect(() =>{
 	const indx:string = window.location.pathname.split("/")[2];
 	const getData = async () => {
-	    const resp = await fetch("http://127.0.0.1:5000/b/player/"+indx);
+	    const resp = await fetch("/b/player/"+indx);
 	    if (!resp.ok){
 	        console.error("error" + resp.status);
 		return;
