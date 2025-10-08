@@ -16,7 +16,7 @@ def scrap_names(query, div):
     return query
 def scrap_section():
     page_count = 1
-    max_page = 175
+    max_page = 179
     query = ""
     names_list = []
     pos_list = []
@@ -30,22 +30,30 @@ def scrap_section():
     phy_list=[]
     while page_count <= max_page:
         soup = BeautifulSoup(requests.get("https://www.ea.com/en/games/ea-sports-fc/ratings" + "?page=" + str(page_count)).text, "html")
-        name_div = soup.find_all("div",class_="Table_profileContent__Lna_E")
-        pos_div = soup.find_all("span", class_="Table_tag__FeM31 generated_utility20sm__KblNR generated_utility19md__EuZui")
-        stat_div = soup.find_all("span", class_="Table_statCellValue__0G9QI")
+        name_div = soup.find_all("span",class_="Table_profileLabel__QjIyD") #player name
+        #print("name:", name_div, "\n")
+        pos_div = soup.find_all("span", class_="Table_tag__PKhvp generated_utility20sm__LaVzO generated_utility19md__Y5_4O") #player position
+        print("position: ", pos_div, "\n")
+        #print("stats:", stat_div, "\n")
+        stat_span = soup.find_all("span", class_="Table_statCellValue__m9gpX")
+        #print("overall:", ovr_span, "\n")
         names_list=names_list + scrap_names(query, name_div).split(" \n")
+        #print("real names:", names_list ,"\n")
         pos_list = scrap_pos(pos_list, pos_div)
-        stats_list = scrap_stats(stats_list, stat_div)
+        #print("real position:", pos_list ,"\n")
+        stats_list = scrap_stats(stats_list, stat_span)
+        #print("real stats:", stats_list, "\n")
         page_count +=1
 
-    
+    #sorting stas and overall rating
     stats_count = 1
     stat_tmp = ""
     for stat in stats_list:
         stat_tmp = stat[:2]
         
-        if stats_count == 1:
-            ovr_list.append(int(stat_tmp))
+        if stats_count == 7:
+            phy_list.append(int(stat_tmp))
+            stats_count = 0
         elif stats_count == 2:
             pace_list.append(int(stat_tmp))
         elif stats_count == 3:
@@ -56,10 +64,9 @@ def scrap_section():
             dri_list.append(int(stat_tmp))
         elif stats_count == 6:
             def_list.append(int(stat_tmp))
-        elif stats_count == 7:
-            phy_list.append(int(stat_tmp))
-            stats_count = 0
-            
+        elif stats_count == 1:
+            ovr_list.append(int(stat_tmp))
+                        
         stats_count +=1
 
     #for i in range(10):
