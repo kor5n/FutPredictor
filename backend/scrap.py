@@ -33,7 +33,7 @@ def scrap_section():
         name_div = soup.find_all("span",class_="Table_profileLabel__QjIyD") #player name
         #print("name:", name_div, "\n")
         pos_div = soup.find_all("span", class_="Table_tag__PKhvp generated_utility20sm__LaVzO generated_utility19md__Y5_4O") #player position
-        print("position: ", pos_div, "\n")
+        #print("position: ", pos_div, "\n")
         #print("stats:", stat_div, "\n")
         stat_span = soup.find_all("span", class_="Table_statCellValue__m9gpX")
         #print("overall:", ovr_span, "\n")
@@ -77,7 +77,7 @@ def scrap_section():
     
     output = pd.DataFrame({'PlayerName': names_list,'Position': pos_list, 'OverallRating': ovr_list, 'PaceRating': pace_list,
                             'ShootRating': sho_list, 'PassRating': pas_list, 'DribRating': dri_list, 'DefenseRating': def_list, 'PhysicalRating':phy_list})
-    output.to_csv('backend/fifaRatings.csv', index=False)
+    output.to_csv('fifaRatings.csv', index=False)
     
 def scrap_stats(stats_list,div):
     stat_count = 1
