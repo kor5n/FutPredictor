@@ -39,15 +39,19 @@ def upload_stats(search_prompt):
     drib= list(stats_csv["DribRating"])
     defend= list(stats_csv["DefenseRating"])
     phys= list(stats_csv["PhysicalRating"])
+    indices = []
     if search_prompt != "null":
         combined = list(zip(pname, pos, ovr, pace, shoot, passing, drib, defend, phys))
-        filtered = [entry for entry in combined if search_prompt.lower() in str(entry[0]).lower()]
-        pname, pos, ovr, pace, shoot, passing, drib, defend, phys = zip(*filtered) if filtered else ([], [], [], [], [], [], [], [], [])
+        filtered = [(index, entry) for index, entry in enumerate(combined) if search_prompt.lower() in str(entry[0]).lower()]
+        indices, entries = zip(*filtered) if filtered else ([],[])
+        pname, pos, ovr, pace, shoot, passing, drib, defend, phys = zip(*entries) if filtered else ([], [], [], [], [], [], [], [], [])
+
+        indices = list(indices)
         pname, pos, ovr, pace, shoot, passing, drib, defend, phys = map(list, (pname, pos, ovr, pace, shoot, passing, drib, defend, phys))
     
     try:
         return jsonify({"message":"Uploading data succesfully", "pname":pname, "pos":pos, "ovr":ovr, "pace":pace,
-                    "shoot":shoot, "pass": passing, "drib": drib, "def":defend, "phys":phys}), 200
+                        "shoot":shoot, "pass": passing, "drib": drib, "def":defend, "phys":phys, "indices": indices}), 200
     except Exception as e:
         return jsonify({"message": e}), 400
 
