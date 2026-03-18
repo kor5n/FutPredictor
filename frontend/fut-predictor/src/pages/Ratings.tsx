@@ -7,6 +7,7 @@ export default function(){
     const [stats, setStats] = useState<string[]>([]);
     const [searchPrompt, setPrompt] = useState<string>("");
     const [pageNum, setPage] = useState<number>(1);
+    const [indexes, setIndexes] = useState<number[]>([])
 
     const ChangePrompt = (event: any) => {
       const { value } = event.target;
@@ -34,6 +35,14 @@ export default function(){
             const data: { [key: string]: (string | number)[] } = await response.json();
       
             if (Math.round(response.status / 100) * 100 === 200) {
+		const indices: (string | number)[] = data.indices; 
+		delete data.indices;
+		const tmp_indx : number[] = [];
+
+		for (let j: number = 0; j<indices.length;j++){
+			tmp_indx.push(Number(indices[j]));
+		}
+		setIndexes(tmp_indx);
                 const sep:string = "|"
                 let propList:string[] = ["Name" +sep+"position"+sep +"overall"+sep+ "pace"+sep+ "shooting" +sep+"passing"+sep+ "dribbling"+sep+ "defending"+sep+ "physical"] 
                 for (let i:number=0;i<data.pname.length;i++){
@@ -85,7 +94,7 @@ export default function(){
               <p>Error loading player names.</p>
           ) : (
               <>
-                <PlayerList stats={stats} page={pageNum} />
+                <PlayerList stats={stats} page={pageNum} indexes={indexes} />
                 <div className="page-btn-div">
                   {pageNum >= 2 ? <button className="page-btn prev-page-btn" onClick={() =>{ChangePage(-1)}}>previous page</button> : null}
                   {pageNum<Math.round(stats.length/100)&&stats.length >= 51 ? <button className="page-btn next-page-btn" onClick={() =>{ChangePage(1)}}>next page</button>: null}
