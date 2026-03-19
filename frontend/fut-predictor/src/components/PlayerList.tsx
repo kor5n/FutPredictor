@@ -68,7 +68,7 @@ export default function PlayerList({stats, page, indexes} : Props){
 		    <tbody>
 			<ListItem item={refTable} index={null} key={0} xtraClass={"first-table"}/>
 			{splitStats[page -1].map((item, index) => (
-                        <ListItem item={item} index={indexes.length == 0 ? index : indexes[index]} key={index} xtraClass={(index) % 2 === 0 ? 'second-row': undefined} />))}
+                        <ListItem item={item} index={indexes[index] !== undefined ? indexes[index] : index} key={index} xtraClass={(index) % 2 === 0 ? 'second-row': undefined} />))}
 	            </tbody>
 	        ) : (
                     <p>Loading or no data</p>
